@@ -10,240 +10,110 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #0d0d0f;
-      --surface: #17171a;
-      --surface2: #1f1f24;
-      --border: #2a2a30;
-      --accent: #c084fc;
-      --accent2: #818cf8;
-      --text: #f1f0f5;
-      --muted: #888899;
-      --success: #34d399;
-      --radius: 14px;
+      --bg: #0d0d0f; --surface: #17171a; --surface2: #1f1f24;
+      --border: #2a2a30; --accent: #c084fc; --accent2: #818cf8;
+      --text: #f1f0f5; --muted: #888899; --success: #34d399; --radius: 14px;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
 
-    header {
-      padding: 1.5rem 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .logo-mark {
-      width: 36px; height: 36px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px;
-    }
-
+    header { padding: 1.5rem 2rem; display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid var(--border); }
+    .logo-mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 18px; }
     .logo-text { font-family: 'Playfair Display', serif; font-size: 1.25rem; letter-spacing: -0.02em; }
     .logo-text span { color: var(--accent); }
-
-    .tagline {
-      margin-left: auto;
-      font-size: 0.78rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.08em;
-    }
+    .tagline { margin-left: auto; font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
 
     main { flex: 1; max-width: 860px; width: 100%; margin: 0 auto; padding: 2.5rem 1.5rem; }
 
+    /* API Key banner */
+    .api-banner { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .api-banner-top { display: flex; align-items: center; gap: 0.75rem; }
+    .api-banner-top .label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+    .api-banner-top .status { margin-left: auto; font-size: 0.78rem; font-weight: 600; padding: 3px 10px; border-radius: 100px; }
+    .status-ok { background: rgba(52,211,153,0.15); color: var(--success); }
+    .status-missing { background: rgba(239,68,68,0.12); color: #fca5a5; }
+    .api-row { display: flex; gap: 0.75rem; }
+    .api-row input { flex: 1; background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.9rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.875rem; outline: none; transition: border-color 0.2s; }
+    .api-row input:focus { border-color: var(--accent); }
+    .api-row input::placeholder { color: var(--muted); }
+    .save-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 1.25rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.875rem; cursor: pointer; white-space: nowrap; transition: border-color 0.2s; }
+    .save-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .api-hint { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .api-hint a { color: var(--accent2); text-decoration: none; }
+    .api-hint a:hover { text-decoration: underline; }
+
     .hero { text-align: center; margin-bottom: 2.5rem; }
-
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 5vw, 3rem);
-      line-height: 1.15; margin-bottom: 0.75rem;
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-    }
-
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; margin-bottom: 0.75rem; }
+    .hero h1 .highlight { background: linear-gradient(90deg, var(--accent), var(--accent2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto; line-height: 1.6; }
 
-    .upload-zone {
-      border: 2px dashed var(--border); border-radius: var(--radius);
-      padding: 3rem 2rem; text-align: center; cursor: pointer;
-      transition: border-color 0.2s, background 0.2s;
-      background: var(--surface); position: relative; margin-bottom: 1.5rem;
-    }
-
-    .upload-zone:hover, .upload-zone.drag-over {
-      border-color: var(--accent); background: rgba(192,132,252,0.05);
-    }
-
-    .upload-zone input[type="file"] {
-      position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-    }
-
+    .upload-zone { border: 2px dashed var(--border); border-radius: var(--radius); padding: 3rem 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; background: var(--surface); position: relative; margin-bottom: 1.5rem; }
+    .upload-zone:hover, .upload-zone.drag-over { border-color: var(--accent); background: rgba(192,132,252,0.05); }
+    .upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
     .upload-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
     .upload-zone h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.4rem; }
     .upload-zone p { color: var(--muted); font-size: 0.875rem; }
 
     .video-preview { display: none; border-radius: var(--radius); overflow: hidden; background: var(--surface); margin-bottom: 1.5rem; }
     .video-preview video { width: 100%; max-height: 300px; object-fit: cover; display: block; }
-
-    .video-meta {
-      padding: 0.875rem 1.25rem; display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border);
-    }
+    .video-meta { padding: 0.875rem 1.25rem; display: flex; align-items: center; gap: 0.75rem; font-size: 0.85rem; color: var(--muted); border-top: 1px solid var(--border); }
     .video-meta strong { color: var(--text); }
 
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
-
     @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
 
     .field { display: flex; flex-direction: column; gap: 0.5rem; }
-
-    .field label {
-      font-size: 0.8rem; color: var(--muted);
-      text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500;
-    }
-
-    .field select, .field input[type="text"] {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.65rem 0.9rem;
-      color: var(--text); font-family: 'Inter', sans-serif;
-      font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%;
-    }
-
+    .field label { font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+    .field select, .field input[type="text"] { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 0.65rem 0.9rem; color: var(--text); font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.2s; width: 100%; }
     .field select:focus, .field input:focus { border-color: var(--accent); }
     .field select option { background: #1f1f24; }
 
-    .generate-btn {
-      width: 100%; padding: 1rem;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border: none; border-radius: var(--radius);
-      color: #fff; font-family: 'Inter', sans-serif;
-      font-size: 1rem; font-weight: 600; cursor: pointer;
-      transition: opacity 0.2s, transform 0.1s; letter-spacing: 0.02em;
-    }
-
+    .generate-btn { width: 100%; padding: 1rem; background: linear-gradient(135deg, var(--accent), var(--accent2)); border: none; border-radius: var(--radius); color: #fff; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s, transform 0.1s; letter-spacing: 0.02em; }
     .generate-btn:hover { opacity: 0.9; }
     .generate-btn:active { transform: scale(0.99); }
     .generate-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
     .loading { display: none; flex-direction: column; align-items: center; gap: 1rem; padding: 3rem; text-align: center; }
-
-    .spinner {
-      width: 44px; height: 44px;
-      border: 3px solid var(--border); border-top-color: var(--accent);
-      border-radius: 50%; animation: spin 0.8s linear infinite;
-    }
-
+    .spinner { width: 44px; height: 44px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .loading p { color: var(--muted); font-size: 0.9rem; }
 
     .results { display: none; flex-direction: column; gap: 1.25rem; margin-top: 2rem; }
-
     .result-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-
-    .result-header {
-      padding: 0.875rem 1.25rem; display: flex; align-items: center;
-      justify-content: space-between; border-bottom: 1px solid var(--border);
-    }
-
-    .result-header h3 {
-      font-size: 0.8rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.08em;
-      color: var(--muted); display: flex; align-items: center; gap: 0.5rem;
-    }
-
+    .result-header { padding: 0.875rem 1.25rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .result-header h3 { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: flex; align-items: center; gap: 0.5rem; }
     .result-header h3 span { font-size: 1rem; }
-
-    .copy-btn {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.3rem 0.75rem;
-      color: var(--muted); font-size: 0.78rem; cursor: pointer;
-      font-family: 'Inter', sans-serif; transition: color 0.2s, border-color 0.2s;
-    }
-
+    .copy-btn { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 0.3rem 0.75rem; color: var(--muted); font-size: 0.78rem; cursor: pointer; font-family: 'Inter', sans-serif; transition: color 0.2s, border-color 0.2s; }
     .copy-btn:hover { color: var(--accent); border-color: var(--accent); }
     .copy-btn.copied { color: var(--success); border-color: var(--success); }
-
     .result-body { padding: 1.25rem; }
 
-    .caption-option {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 0.875rem;
-      cursor: pointer; transition: border-color 0.2s; position: relative;
-    }
-
+    .caption-option { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 0.875rem; cursor: pointer; transition: border-color 0.2s; }
     .caption-option:last-child { margin-bottom: 0; }
     .caption-option:hover { border-color: var(--accent2); }
     .caption-option.selected { border-color: var(--accent); background: rgba(192,132,252,0.07); }
-
-    .caption-label {
-      font-size: 0.7rem; color: var(--accent);
-      text-transform: uppercase; letter-spacing: 0.08em;
-      font-weight: 600; margin-bottom: 0.5rem;
-    }
-
+    .caption-label { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 0.5rem; }
     .caption-text { font-size: 0.92rem; line-height: 1.65; color: var(--text); white-space: pre-wrap; }
 
     .hashtag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-
-    .hashtag {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 100px; padding: 0.3rem 0.75rem;
-      font-size: 0.82rem; color: var(--accent2); cursor: pointer;
-      transition: background 0.15s, border-color 0.15s; user-select: none;
-    }
-
+    .hashtag { background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 0.3rem 0.75rem; font-size: 0.82rem; color: var(--accent2); cursor: pointer; transition: background 0.15s, border-color 0.15s; user-select: none; }
     .hashtag:hover { background: rgba(129,140,248,0.12); border-color: var(--accent2); }
     .hashtag.selected { background: rgba(129,140,248,0.18); border-color: var(--accent2); }
 
     .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-
     @media (max-width: 500px) { .strategy-grid { grid-template-columns: 1fr; } }
-
     .strategy-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 0.875rem 1rem; }
     .strategy-card .s-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.35rem; }
     .strategy-card .s-value { font-size: 0.9rem; font-weight: 500; color: var(--text); }
 
     .hooks-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .hooks-list li { background: var(--surface2); border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; padding: 0.75rem 1rem; font-size: 0.9rem; line-height: 1.5; color: var(--text); }
 
-    .hooks-list li {
-      background: var(--surface2); border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0; padding: 0.75rem 1rem;
-      font-size: 0.9rem; line-height: 1.5; color: var(--text);
-    }
-
-    .reset-btn {
-      background: transparent; border: 1px solid var(--border); border-radius: 10px;
-      color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.875rem;
-      padding: 0.65rem 1.25rem; cursor: pointer; display: flex;
-      align-items: center; gap: 0.5rem; margin-top: 1rem;
-      transition: color 0.2s, border-color 0.2s;
-    }
-
+    .reset-btn { background: transparent; border: 1px solid var(--border); border-radius: 10px; color: var(--muted); font-family: 'Inter', sans-serif; font-size: 0.875rem; padding: 0.65rem 1.25rem; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem; transition: color 0.2s, border-color 0.2s; }
     .reset-btn:hover { color: var(--text); border-color: var(--text); }
 
-    .error-box {
-      display: none; background: rgba(239,68,68,0.1);
-      border: 1px solid rgba(239,68,68,0.3); border-radius: 10px;
-      padding: 1rem 1.25rem; color: #fca5a5; font-size: 0.9rem; margin-top: 1rem;
-    }
-
-    .badge-new {
-      display: inline-block; background: rgba(192,132,252,0.15);
-      color: var(--accent); font-size: 0.65rem; padding: 2px 8px;
-      border-radius: 100px; font-weight: 600; letter-spacing: 0.06em;
-      text-transform: uppercase; vertical-align: middle; margin-left: 0.4rem;
-    }
-
+    .error-box { display: none; background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); border-radius: 10px; padding: 1rem 1.25rem; color: #fca5a5; font-size: 0.9rem; margin-top: 1rem; line-height: 1.6; }
+    .badge-new { display: inline-block; background: rgba(192,132,252,0.15); color: var(--accent); font-size: 0.65rem; padding: 2px 8px; border-radius: 100px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; vertical-align: middle; margin-left: 0.4rem; }
     footer { text-align: center; padding: 1.5rem; color: var(--muted); font-size: 0.78rem; border-top: 1px solid var(--border); }
   </style>
 </head>
@@ -256,6 +126,23 @@
 </header>
 
 <main>
+
+  <!-- API Key Section -->
+  <div class="api-banner" id="apiBanner">
+    <div class="api-banner-top">
+      <span class="label">🔑 Anthropic API Key</span>
+      <span class="status status-missing" id="apiStatus">Not set</span>
+    </div>
+    <div class="api-row">
+      <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." autocomplete="off" />
+      <button class="save-btn" onclick="saveKey()">Save key</button>
+    </div>
+    <p class="api-hint">
+      Your key is saved only in your browser (localStorage) — never sent anywhere except directly to Anthropic.
+      Get a free key at <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a> → API Keys.
+    </p>
+  </div>
+
   <div class="hero">
     <h1>Turn your session into<br><span class="highlight">a scroll-stopper</span></h1>
     <p>Upload your cover or singing video and get captions, hashtags, and a posting strategy tuned for maximum reach.</p>
@@ -277,7 +164,7 @@
     </div>
   </div>
 
-  <div class="form-grid" id="formGrid">
+  <div class="form-grid">
     <div class="field">
       <label>Content type</label>
       <select id="contentType">
@@ -338,7 +225,7 @@
     <div class="result-section">
       <div class="result-header">
         <h3><span>#️⃣</span> Hashtags <span class="badge-new">tap to deselect</span></h3>
-        <button class="copy-btn" id="copyHashBtn" onclick="copyHashtags(event)">Copy all</button>
+        <button class="copy-btn" onclick="copyHashtags(event)">Copy all</button>
       </div>
       <div class="result-body">
         <div class="hashtag-cloud" id="hashtagCloud"></div>
@@ -370,6 +257,32 @@
 <footer>SingPost · Built for cover singers on Instagram · Powered by Claude AI</footer>
 
 <script>
+  // --- API Key management ---
+  const apiKeyInput = document.getElementById('apiKeyInput');
+  const apiStatus = document.getElementById('apiStatus');
+
+  function loadKey() {
+    const k = localStorage.getItem('singpost_api_key');
+    if (k) {
+      apiKeyInput.value = k;
+      apiStatus.textContent = 'Set ✓';
+      apiStatus.className = 'status status-ok';
+    }
+  }
+
+  function saveKey() {
+    const k = apiKeyInput.value.trim();
+    if (!k) { showError('Please paste your API key first.'); return; }
+    if (!k.startsWith('sk-ant-')) { showError('That doesn\'t look like an Anthropic key — it should start with sk-ant-'); return; }
+    localStorage.setItem('singpost_api_key', k);
+    apiStatus.textContent = 'Set ✓';
+    apiStatus.className = 'status status-ok';
+    document.getElementById('errorBox').style.display = 'none';
+  }
+
+  loadKey();
+
+  // --- File upload ---
   const uploadZone = document.getElementById('uploadZone');
   const videoInput = document.getElementById('videoInput');
   const videoPreview = document.getElementById('videoPreview');
@@ -399,40 +312,27 @@
     document.getElementById('fileName').textContent = file.name;
     document.getElementById('fileSize').textContent = (file.size / (1024 * 1024)).toFixed(1) + ' MB';
     uploadedMediaType = file.type || 'video/mp4';
-
-    if (file.type.startsWith('video/')) {
-      videoEl.src = URL.createObjectURL(file);
-      videoEl.style.display = 'block';
-    } else {
-      videoEl.style.display = 'none';
-    }
-
+    if (file.type.startsWith('video/')) { videoEl.src = URL.createObjectURL(file); videoEl.style.display = 'block'; }
+    else { videoEl.style.display = 'none'; }
     videoPreview.style.display = 'block';
     uploadZone.style.display = 'none';
-
     const reader = new FileReader();
     reader.onload = e => { uploadedBase64 = e.target.result.split(',')[1]; };
     reader.readAsDataURL(file);
   }
 
-  const loadingMessages = [
-    'Analysing your vibe and video…',
-    'Crafting captions that stop the scroll…',
-    'Building your hashtag strategy…',
-    'Putting together your posting playbook…',
-  ];
+  const loadingMessages = ['Analysing your vibe and video…','Crafting captions that stop the scroll…','Building your hashtag strategy…','Putting together your posting playbook…'];
   let loadingInterval;
-
   function showLoading() {
-    let i = 0;
-    loadingMsg.textContent = loadingMessages[0];
-    loadingInterval = setInterval(() => { i = (i + 1) % loadingMessages.length; loadingMsg.textContent = loadingMessages[i]; }, 2200);
+    let i = 0; loadingMsg.textContent = loadingMessages[0];
+    loadingInterval = setInterval(() => { i = (i+1) % loadingMessages.length; loadingMsg.textContent = loadingMessages[i]; }, 2200);
   }
-
   function hideLoading() { clearInterval(loadingInterval); }
 
   async function generate() {
     errorBox.style.display = 'none';
+    const apiKey = localStorage.getItem('singpost_api_key');
+    if (!apiKey) { showError('Please enter and save your Anthropic API key at the top first.'); return; }
     if (!uploadedFile) { showError('Please upload a video or image first.'); return; }
 
     const contentType = document.getElementById('contentType').value;
@@ -450,19 +350,16 @@
 
     const systemPrompt = `You are an expert Instagram growth strategist specialising in musicians, cover singers, and unplugged/acoustic content creators. You deeply understand the Indian music creator space, regional languages (Tamil, Hindi, Malayalam, Bengali), Bollywood, Indie, and English pop covers, and how they perform on Instagram Reels.
 
-When given details about a singer's video, you generate highly optimised Instagram content that maximises reach, saves, shares, and follower growth.
+ALWAYS respond with ONLY valid JSON. No markdown, no code fences, no preamble. Just the raw JSON object.
 
-ALWAYS respond with ONLY valid JSON. No markdown, no code fences, no explanation. Just the raw JSON object.
-
-JSON structure:
 {
   "captions": [
     { "style": "Emotional hook", "text": "full caption text with line breaks and emojis" },
     { "style": "Storytelling", "text": "full caption text" },
     { "style": "Bold & minimal", "text": "full caption text" }
   ],
-  "hashtags": ["#tag1", "#tag2"],
-  "hooks": ["Hook idea 1", "Hook idea 2", "Hook idea 3"],
+  "hashtags": ["#tag1","#tag2"],
+  "hooks": ["Hook idea 1","Hook idea 2","Hook idea 3"],
   "strategy": {
     "best_time": "value",
     "post_format": "value",
@@ -473,20 +370,14 @@ JSON structure:
   }
 }
 
-Rules for captions: each must be 80-180 words, feel real and personal, include 2-4 relevant emojis inline, end with a question or CTA, adapt tone to mood, no hashtag stuffing.
-Rules for hashtags: return exactly 25. Mix: 6 mega (>5M posts), 8 mid (500K-5M), 7 niche (50K-500K), 4 micro (<50K). Include language/region-specific tags.
-Rules for hooks: actual text/action ideas for the first 2 seconds, curiosity-driven or emotionally grabbing.
-Strategy: best_time for Indian audience, post_format with reason, cover_image_tip, cta for stories after posting, series_idea for recurring content, collab_tip at their follower level.`;
+Captions: 80-180 words each, personal and genuine, 2-4 emojis inline, end with question or CTA, no hashtag stuffing.
+Hashtags: exactly 25. Mix: 6 mega (>5M), 8 mid (500K-5M), 7 niche (50K-500K), 4 micro (<50K). Include language/region tags.
+Hooks: specific action/text ideas for first 2 seconds, curiosity or emotion-driven.
+Strategy: tune everything for Indian Instagram audience growing from 1K followers.`;
 
-    const userPrompt = `Singer's video details:
-- Content type: ${contentType}
-- Mood / vibe: ${mood}
-- Song language: ${language}
-- Song name: ${songName || 'not specified'}
-- ${fileInfo}
-${isImage ? '- A thumbnail/screenshot of the video has been provided' : '- Video file uploaded (use metadata and context)'}
+    const userPrompt = `Content type: ${contentType} | Mood: ${mood} | Language: ${language} | Song: ${songName||'not specified'} | ${fileInfo}${isImage?' | Thumbnail/screenshot provided':''}
 
-Generate the full Instagram content package. Make it feel authentic for a passionate cover singer with ~1K followers growing organically. Personal and genuine, not generic.`;
+Generate the full Instagram content package. Personal, genuine, for a cover singer with ~1K followers growing organically.`;
 
     try {
       let messageContent;
@@ -499,10 +390,14 @@ Generate the full Instagram content package. Make it feel authentic for a passio
         messageContent = userPrompt;
       }
 
-      // Call our own serverless proxy — no CORS, no key exposure
-      const response = await fetch('/api/generate', {
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': apiKey,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true'
+        },
         body: JSON.stringify({
           model: 'claude-sonnet-4-6',
           max_tokens: 1500,
@@ -511,29 +406,17 @@ Generate the full Instagram content package. Make it feel authentic for a passio
         })
       });
 
-      const responseText = await response.text();
-
-      // Check if we got HTML instead of JSON (means API route not found / key not set)
-      if (responseText.trim().startsWith('<') || responseText.trim().startsWith('The page')) {
-        throw new Error('API route not reachable. Make sure ANTHROPIC_API_KEY is set in Vercel → Settings → Environment Variables, then Redeploy.');
-      }
-
-      let data;
-      try { data = JSON.parse(responseText); }
-      catch (e) { throw new Error('Unexpected response from server: ' + responseText.slice(0, 120)); }
-
-      if (!response.ok) throw new Error(data.error?.message || data.error || `Server error ${response.status}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error?.message || JSON.stringify(data.error) || `API error ${response.status}`);
 
       const rawText = data.content.map(b => b.text || '').join('');
       const clean = rawText.replace(/```json|```/g, '').trim();
       generatedData = JSON.parse(clean);
 
-      hideLoading();
-      loading.style.display = 'none';
+      hideLoading(); loading.style.display = 'none';
       renderResults(generatedData);
     } catch (err) {
-      hideLoading();
-      loading.style.display = 'none';
+      hideLoading(); loading.style.display = 'none';
       generateBtn.disabled = false;
       showError('Error: ' + err.message);
     }
@@ -544,7 +427,7 @@ Generate the full Instagram content package. Make it feel authentic for a passio
     captionsBody.innerHTML = '';
     data.captions.forEach((cap, i) => {
       const div = document.createElement('div');
-      div.className = 'caption-option' + (i === 0 ? ' selected' : '');
+      div.className = 'caption-option' + (i===0?' selected':'');
       div.onclick = () => selectCaption(i);
       div.innerHTML = `<div class="caption-label">${escHtml(cap.style)}</div><div class="caption-text">${escHtml(cap.text)}</div>`;
       captionsBody.appendChild(div);
@@ -555,34 +438,28 @@ Generate the full Instagram content package. Make it feel authentic for a passio
     cloud.innerHTML = '';
     data.hashtags.forEach(tag => {
       const span = document.createElement('span');
-      span.className = 'hashtag selected';
-      span.textContent = tag;
+      span.className = 'hashtag selected'; span.textContent = tag;
       span.onclick = () => span.classList.toggle('selected');
       cloud.appendChild(span);
     });
 
     const hooksList = document.getElementById('hooksList');
     hooksList.innerHTML = '';
-    data.hooks.forEach(hook => {
-      const li = document.createElement('li');
-      li.textContent = hook;
-      hooksList.appendChild(li);
-    });
+    data.hooks.forEach(hook => { const li = document.createElement('li'); li.textContent = hook; hooksList.appendChild(li); });
 
     const strategyGrid = document.getElementById('strategyGrid');
     const s = data.strategy;
     const items = [
-      { label: 'Best time to post', value: s.best_time },
-      { label: 'Recommended format', value: s.post_format },
-      { label: 'Thumbnail tip', value: s.cover_image_tip },
-      { label: 'Story CTA after posting', value: s.cta },
-      { label: 'Series idea', value: s.series_idea },
-      { label: 'Collab / tag tip', value: s.collab_tip },
+      {label:'Best time to post',value:s.best_time},
+      {label:'Recommended format',value:s.post_format},
+      {label:'Thumbnail tip',value:s.cover_image_tip},
+      {label:'Story CTA after posting',value:s.cta},
+      {label:'Series idea',value:s.series_idea},
+      {label:'Collab / tag tip',value:s.collab_tip},
     ];
     strategyGrid.innerHTML = '';
     items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'strategy-card';
+      const card = document.createElement('div'); card.className = 'strategy-card';
       card.innerHTML = `<div class="s-label">${escHtml(item.label)}</div><div class="s-value">${escHtml(item.value)}</div>`;
       strategyGrid.appendChild(card);
     });
@@ -594,41 +471,36 @@ Generate the full Instagram content package. Make it feel authentic for a passio
 
   function selectCaption(i) {
     selectedCaption = i;
-    document.querySelectorAll('.caption-option').forEach((el, j) => el.classList.toggle('selected', i === j));
+    document.querySelectorAll('.caption-option').forEach((el,j) => el.classList.toggle('selected', i===j));
   }
 
   function copySelected(e) {
     if (!generatedData) return;
     const cap = generatedData.captions[selectedCaption].text;
-    const tags = [...document.querySelectorAll('.hashtag.selected')].map(el => el.textContent).join(' ');
-    navigator.clipboard.writeText(cap + '\n\n' + tags).then(() => {
-      const btn = e.target;
-      btn.textContent = 'Copied!'; btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy selected'; btn.classList.remove('copied'); }, 2000);
+    const tags = [...document.querySelectorAll('.hashtag.selected')].map(el=>el.textContent).join(' ');
+    navigator.clipboard.writeText(cap+'\n\n'+tags).then(() => {
+      const btn = e.target; btn.textContent='Copied!'; btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy selected';btn.classList.remove('copied');},2000);
     });
   }
 
   function copyHashtags(e) {
-    const tags = [...document.querySelectorAll('.hashtag.selected')].map(el => el.textContent).join(' ');
+    const tags = [...document.querySelectorAll('.hashtag.selected')].map(el=>el.textContent).join(' ');
     navigator.clipboard.writeText(tags).then(() => {
-      const btn = e.target;
-      btn.textContent = 'Copied!'; btn.classList.add('copied');
-      setTimeout(() => { btn.textContent = 'Copy all'; btn.classList.remove('copied'); }, 2000);
+      const btn = e.target; btn.textContent='Copied!'; btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy all';btn.classList.remove('copied');},2000);
     });
   }
 
   function reset() {
-    uploadedFile = null; uploadedBase64 = null; generatedData = null;
-    videoPreview.style.display = 'none';
-    uploadZone.style.display = 'block';
-    results.style.display = 'none';
-    errorBox.style.display = 'none';
-    videoInput.value = '';
-    generateBtn.disabled = false;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    uploadedFile=null; uploadedBase64=null; generatedData=null;
+    videoPreview.style.display='none'; uploadZone.style.display='block';
+    results.style.display='none'; errorBox.style.display='none';
+    videoInput.value=''; generateBtn.disabled=false;
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  function showError(msg) { errorBox.textContent = msg; errorBox.style.display = 'block'; }
+  function showError(msg) { errorBox.textContent=msg; errorBox.style.display='block'; }
   function escHtml(str) { return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>'); }
 </script>
 </body>
